@@ -9,14 +9,22 @@ function calcNumbers (action, a, b) {
     } else if (action == 'mult') {
         return a * b;
     } else if (action == 'div') {
-        return a / b;
+        if (b == 0) {
+            return 'Dont do this!'; 
+        } else {
+            return a / b; 
+        }
     } else if (action == 'rem') {
         return a % b;
     } else if (action == 'exp') {
         return a ** b;
     } else {
-        alert ('unknown operation');
+        return ('unknown operation');
     }
 }
     console.log (calcNumbers ('sum', 2, 1));
     console.log (calcNumbers ('subtr', 2, 1));
+    console.log (calcNumbers ('mult', 2, 1));
+    console.log (calcNumbers ('div', 2, 1));
+    console.log (calcNumbers ('rem', 2, 1));
+    console.log (calcNumbers ('exp', 2, 1));
