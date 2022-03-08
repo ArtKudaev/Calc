@@ -28,4 +28,3 @@ function calcNumbers (action, a, b) {
     console.log (calcNumbers ('div', 2, 1));
     console.log (calcNumbers ('rem', 2, 1));
     console.log (calcNumbers ('exp', 2, 1));
-// добавление изменений
