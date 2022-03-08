@@ -2,23 +2,30 @@ function calcNumbers (action, a, b) {
     if (action === '' || typeof action !== 'string' || typeof a !== 'number' || typeof b !== 'number') {
         return 'Error';
     }
-    if (action == 'sum') {
-        return a + b;
-    } else if (action == 'subtr') {
-        return a - b;
-    } else if (action == 'mult') {
-        return a * b;
-    } else if (action == 'div') {
-        if (b == 0) {
-            return 'Dont do this!'; 
-        } else {
-            return a / b; 
-        }
-    } else if (action == 'rem') {
-        return a % b;
-    } else if (action == 'exp') {
-        return a ** b;
-    } else {
+    
+    switch (action) {
+        case 'sum':
+            return a + b;
+            break;
+        case 'subtr': 
+            return a - b;
+            break;
+        case 'mult': 
+            return a * b;
+            break;
+        case 'div': 
+            if (b == 0) 
+                return 'Dont do this!'; 
+            else 
+                return a / b; 
+            break;
+        case 'rem': 
+            return a % b;
+            break;
+        case 'exp': 
+            return a ** b;
+            break;
+        default: 
         return ('unknown operation');
     }
 }
