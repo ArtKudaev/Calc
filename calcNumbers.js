@@ -1,28 +1,36 @@
-function calcNumbers (action, a, b) {
-    if (action === '' || typeof action !== 'string' || typeof a !== 'number' || typeof b !== 'number') {
+let action = {
+    sum: 'sum',
+    subtr: 'subtr',
+    mult: 'mult',
+    div: 'div',
+    rem: 'rem',
+    exp: 'exp',
+}
+function calcNumbers (operation, a, b) {
+    if (operation === '' || typeof operation !== 'string' || typeof a !== 'number' || typeof b !== 'number') {
         return 'Error';
     }
     
-    switch (action) {
-        case 'sum':
+    switch (operation) {
+        case action.sum:
             return a + b;
             break;
-        case 'subtr': 
+        case action.subtr: 
             return a - b;
             break;
-        case 'mult': 
+        case action.mult: 
             return a * b;
             break;
-        case 'div': 
+        case action.div: 
             if (b == 0) 
                 return 'Dont do this!'; 
             else 
                 return a / b; 
             break;
-        case 'rem': 
+        case action.rem: 
             return a % b;
             break;
-        case 'exp': 
+        case action.exp: 
             return a ** b;
             break;
         default: 
