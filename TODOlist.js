@@ -1,67 +1,65 @@
-/*
-const list = {};
+let list = [];
+
+    function addTask(taskName) {
+        let max_id = list.reduce((acc, item) => Math.max(item.id), 0);
+        list.push({id: max_id + 1, name: taskName, status: 'To Do', priority: 'low'}); 
+    }
     
-    function addTask(adding) {
-        adding["create a task"] = "In Progress";
-        adding["make a bed"] = "Done";
-        adding["write a post"] = "To Do";
-        adding["have a walk"] = "To Do"
-        return adding
-    }
-    console.log(addTask(list));
+    function changeStatus(taskName, status) {
+        list = list.map((item) => {
+            if (item.name == taskName) {
+                item.status = status;
+                return item;
+            }
+            return item;
+        });
+    }  
 
-    function changeStatus(change) {
-        change["write a post"] = "Done";
-        return change
+    function deleteTask(taskName) {
+        list = list.filter(item => {
+            return item.name !== taskName;
+        });
     }
-    console.log(changeStatus(list));
-
-    function deleteTask(deleteIt) {
-        delete deleteIt["have a walk"];
-        return deleteIt
-    }
-    console.log(deleteTask(list));
-
-    function showList() {
-        
-    }
-*/
-
-const list = {};
-
-    function addTask(task, status) {
-        list[task] = status;
-    }
-    addTask('wake up', 'To Do');
-    addTask('do workout', 'To Do');
-    addTask('have a breakfast', 'To Do');
-
-    function changeStatus(task, status) {
-        list[task] = status;
-    }
+    
+    addTask('wake up');
+    addTask('have a breakfast');
+    addTask('do workout');
     changeStatus('wake up', 'Done');
-    changeStatus('do workout', 'In Progress')
-
-    function deleteTask(task) {
-        delete list[task];
-    }
-    deleteTask('do workout');
+    deleteTask('have a breakfast');
 
     function showList() {
-        console.log('To do:')
-            for (let tsk in list) {
-                if (list[tsk] == 'To Do') 
-                    console.log(tsk);
-                } 
-        console.log('In Progress:')
-            for (let tsk in list) {     
-                if (list[tsk] == 'In Progress') 
-                    console.log(tsk);
-                } 
-        console.log('Done:')
-            for (let tsk in list) {     
-                if (list[tsk] == 'Done') 
-                    console.log(tsk);
-                }
+            
+        let todo = '';
+        let done = '';
+        let inProgress = '';
+    
+        list.forEach(item => {
+            if (item.status == "To Do") {
+                todo += '  ' + item.name + '\n';
+            }
+    
+            if (item.status == "In Progress") {
+                inProgress += '  ' + item.name + '\n';
+            }
+    
+            if (item.status == "Done") {
+                done += '  ' + item.name + '\n';
+            }
+        });
+    
+        if (todo == '') {
+            todo = '-\n';
+        }
+    
+        if (inProgress == '') {
+            inProgress = '-\n';
+        }
+    
+        if (done == '') {
+            done = '-\n';
+        }
+    
+        console.log('Todo:\n' + todo + 'In Progress:\n' + inProgress + 'Done:\n' + done);  
     }
+    console.log(list);
     showList();
