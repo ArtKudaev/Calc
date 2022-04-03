@@ -15,6 +15,16 @@ let list = [];
         });
     }  
 
+    function changePriority(taskName, priority) {
+        list = list.map((item) => {
+            if (item.name == taskName) {
+                item.priority = priority;
+                return item;
+            }
+            return item;
+        });
+    }
+
     function deleteTask(taskName) {
         list = list.filter(item => {
             return item.name !== taskName;
@@ -25,6 +35,7 @@ let list = [];
     addTask('have a breakfast');
     addTask('do workout');
     changeStatus('wake up', 'Done');
+    changePriority('do workout', 'high');
     deleteTask('have a breakfast');
 
     function showList() {
