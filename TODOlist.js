@@ -2,10 +2,10 @@ let list = [];
 
     function addTask(taskName) {
         let max_id = list.reduce((acc, item) => Math.max(item.id), 0);
-        list.push({id: max_id + 1, name: taskName, status: 'To Do', priority: 'low'}); 
+        list.push({id: max_id + 1, name: taskName, status: 'To Do', priority: 'low'}); // добавление объектов в массив
     }
     
-    function changeStatus(taskName, status) {
+    function changeStatus(taskName, status) {                                          // изменение статуса
         list = list.map((item) => {
             if (item.name == taskName) {
                 item.status = status;
@@ -15,7 +15,7 @@ let list = [];
         });
     }  
 
-    function changePriority(taskName, priority) {
+    function changePriority(taskName, priority) {                                      // изменение приоритета 
         list = list.map((item) => {
             if (item.name == taskName) {
                 item.priority = priority;
@@ -25,7 +25,7 @@ let list = [];
         });
     }
 
-    function deleteTask(taskName) {
+    function deleteTask(taskName) {                                                    // удаление задачи
         list = list.filter(item => {
             return item.name !== taskName;
         });
@@ -39,12 +39,12 @@ let list = [];
     deleteTask('have a breakfast');
 
     function showList() {
-            
+        
         let todo = '';
         let done = '';
         let inProgress = '';
     
-        list.forEach(item => {
+        list.forEach(item => {                                                         // группировка по статусу
             if (item.status == "To Do") {
                 todo += '  ' + item.name + '\n';
             }
@@ -70,7 +70,37 @@ let list = [];
             done = '-\n';
         }
     
-        console.log('Todo:\n' + todo + 'In Progress:\n' + inProgress + 'Done:\n' + done);  
+        let lowPriority = '';
+        let highPriority = '';
+
+        list.forEach(item => {                                                          // группировка по приоритету
+            if (item.priority == 'low') {
+                lowPriority += ' ' + item.name + '\n';
+            }
+
+            if (item.priority == 'high') {
+                highPriority += ' ' + item.name + '\n';
+            }
+        });
+
+        if (lowPriority == '') {
+            lowPriority = '-\n';
+        }
+
+        if (highPriority = '') {
+            highPriority = '-\n';
+        }
+
+
+        function showBy(group) {
+            if (group == 'status') {
+                console.log('Todo:\n' + todo + 'In Progress:\n' + inProgress + 'Done:\n' + done);  // вывод ToDo листа по статусу
+            }
+            else if (group == 'priority') {
+                console.log('low:\n' + lowPriority + 'high:\n' + highPriority);                    // вывод ToDo листа по приоритету
+            } 
+        }
+        showBy('priority');
     }
     console.log(list);
     showList();
