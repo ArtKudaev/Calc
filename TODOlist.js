@@ -38,7 +38,7 @@ let list = [];
     changePriority('do workout', 'high');
     deleteTask('have a breakfast');
 
-    function showList() {
+    function showBy(group) {
         
         let todo = '';
         let done = '';
@@ -87,20 +87,18 @@ let list = [];
             lowPriority = '-\n';
         }
 
-        if (highPriority = '') {
+        if (highPriority == '') {
             highPriority = '-\n';
         }
 
-
-        function showBy(group) {
+        
             if (group == 'status') {
                 console.log('Todo:\n' + todo + 'In Progress:\n' + inProgress + 'Done:\n' + done);  // вывод ToDo листа по статусу
             }
             else if (group == 'priority') {
                 console.log('low:\n' + lowPriority + 'high:\n' + highPriority);                    // вывод ToDo листа по приоритету
             } 
-        }
-        showBy('priority');
+        
     }
     console.log(list);
-    showList();
+    showBy('priority');
